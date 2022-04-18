@@ -39,13 +39,18 @@ function setup() {
       this.color = "#AA33AA";
       this.noTint = false;
       this.tint = "#FF0000";
-      message = 'welp';
+      message = 'a door';
     }
 
     clickDoor.onOutside = function () {
    this.color = "#FFFFFF";
    this.noTint = true;
-   message = 'hey :\')';
+   message = 'What should I look at?';
+   }
+
+   clickDoor.onRelease = function () {
+     message = 'I opened the door';
+     narration();
    }
 
 }
@@ -71,12 +76,12 @@ background(homePage);
 }
 
 function ending() {
-  background(240, 0 ,0);
-  stroke(255);
-  fill(255);
-  textSize(75);
-  textAlign(CENTER);
-  text('GAME OVER', width*0.5, height*0.33);h1>
-  textSize(25);
-  text('Press "S" To Restart Game', width*0.5, height*0.66);
+  background(endPage);
+
+}
+
+function narration()
+{
+  background('black');
+  text(message);
 }
