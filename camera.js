@@ -22,6 +22,7 @@ let clickImg;
 
 // items
 let tvOn;
+let door;
 
 // button
 var clickDoor;
@@ -31,7 +32,7 @@ let right;
 let left;
 let clickTVon;
 
-let mode = 'ending';
+let mode = 'room_door';
 
 function preload() {
   clickImg = loadImage('logo.png');
@@ -43,6 +44,7 @@ function preload() {
   room_doorway = loadImage('my_assets/img/dma_node-4.png');
 
   left = loadImage('my_assets/img/prev.png');
+  door = loadImage('my_assets/img/door.png');
   right = loadImage('my_assets/img/next.png');
   tvOn = loadImage('my_assets/img/tv-on.png');
   endPage = loadImage('my_assets/img/dma_node 3.png');
@@ -53,12 +55,14 @@ function setup() {
   myCanvas.parent('myCanvas');
 
   clickDoor = new Clickable();
-  clickDoor.image = tvOn;
-  clickDoor.locate(330, 120);
-  clickDoor.resize(180, 440);
+  clickDoor.image = door;
+  clickDoor.text = "";
+  clickDoor.locate(300, 120);
+  clickDoor.resize(220, 440);
+  clickDoor.strokeWeight = 0;
 
   clickDoor.onHover = function() {
-    message = 'a door';
+    message = 'I should probably keep this closed.';
   }
 
   clickDoor.onOutside = function() {
@@ -77,7 +81,6 @@ function setup() {
   clickYes.text = "Yeah";
   clickYes.locate(100, 500);
   clickYes.resize(250,190);
-  clickYes.strokeWeight = 0;
 
   clickYes.onRelease = function() {
     mode = 'room_liv_on';
@@ -104,11 +107,11 @@ function setup() {
   clickLeft.strokeWeight = 0;
 
   clickLeft.onHover = function() {
-    message = 'Go to the front door';
+    message = 'Move to the next area';
   }
 
   clickLeft.onRelease = function() {
-    if (mode.equals('room_liv_on'))
+    if (mode === 'room_liv_on')
     {
       mode = 'room_door';
     }
@@ -152,6 +155,9 @@ function draw() {
       break;
     case 'room1':
       room_liv_on();
+      break;
+    case 'room_door':
+      room_door();
       break;
     case 'room2':
       room2();
@@ -229,7 +235,7 @@ function room_kit() {
 }
 
 function room_door() {
-  background(room_door);
+  background(room_doorway);
   clickDoor.draw();
   mainText();
 }
