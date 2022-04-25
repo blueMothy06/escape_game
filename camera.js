@@ -32,7 +32,7 @@ let right;
 let left;
 let clickTVon;
 
-let mode = 'room_door';
+let mode = 'home';
 
 function preload() {
   clickImg = loadImage('logo.png');
@@ -111,7 +111,7 @@ function setup() {
   }
 
   clickLeft.onRelease = function() {
-    if (mode === 'room_liv_on')
+    if (mode = 'room_liv_on')
     {
       mode = 'room_door';
     }
@@ -168,11 +168,20 @@ function draw() {
   }
 }
 
+// function mouseClicked() {
+//   if (mode === 'home') {
+//     mode = 'room1';
+//   }
+//   if (mode === 'ending') {
+//       mode = 'home';
+//   }
+// }
+
 function mouseClicked() {
-  if (mode === 'home') {
-    mode = 'room1';
+  if (mode = 'home') {
+    mode = 'room_liv_on';
   }
-  if (mode === 'ending') {
+  if (mode = 'ending') {
       mode = 'home';
   }
 }

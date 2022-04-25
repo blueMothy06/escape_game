@@ -1,8 +1,11 @@
-Read me!
+#Read me!
 
-Overview: A groundhog-simulator/point-and-click game where the player must find a way to escape an inescapable doom.
+#Overview:
+A groundhog-simulator/point-and-click game where the player must find a way to escape an inescapable doom.
 
-Loose outline:
+[used clickable](https://github.com/Lartu/p5.clickable)
+
+#Loose outline:
 
 April 18 - get the structure done, esp with the concepts. what code is necessary to make everything work. plan and understand the crap out of it
 April 19 - make sure everything is possible, then storyboard this. add some lines if necessary
