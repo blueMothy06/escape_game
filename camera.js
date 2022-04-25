@@ -7,7 +7,6 @@ let message = 'hello :)';
 let narrationText = '';
 
 // img
-let bg;
 let homePage;
 let endPage;
 
@@ -28,13 +27,14 @@ let tvOn;
 var clickDoor;
 var clickYes;
 var clickNo;
+let right;
+let left;
 let clickTVon;
 
-let mode = 'home';
+let mode = 'ending';
 
 function preload() {
   clickImg = loadImage('logo.png');
-  bg = loadImage('my_assets/img/bg.png');
   homePage = loadImage('my_assets/img/dma_node 1.png');
   room_living_on = loadImage('my_assets/img/dma_node-1.1.png');
   room_living_off = loadImage('my_assets/img/dma_node-1.2.png');
@@ -42,6 +42,8 @@ function preload() {
   room_kitchen = loadImage('my_assets/img/dma_node-3.png');
   room_doorway = loadImage('my_assets/img/dma_node-4.png');
 
+  left = loadImage('my_assets/img/prev.png');
+  right = loadImage('my_assets/img/next.png');
   tvOn = loadImage('my_assets/img/tv-on.png');
   endPage = loadImage('my_assets/img/dma_node 3.png');
 }
@@ -93,6 +95,25 @@ function setup() {
     mode = 'room_liv_on';
   }
 
+//click left
+  clickLeft = new Clickable();
+  clickLeft.text = "";
+  clickLeft.image = left;
+  clickLeft.locate(20, 400);
+  clickLeft.resize(50,50);
+  clickLeft.strokeWeight = 0;
+
+  clickLeft.onHover = function() {
+    message = 'Go to the front door';
+  }
+
+  clickLeft.onRelease = function() {
+    if (mode.equals('room_liv_on'))
+    {
+      mode = 'room_door';
+    }
+  }
+
 
 // TV INTERACTIONS
   clickTVon = new Clickable();
@@ -139,14 +160,14 @@ function draw() {
       ending();
       break;
   }
-
 }
 
 function mouseClicked() {
   if (mode === 'home') {
     mode = 'room1';
-  } else if (mode === 'ending') {
-      mode = 'room1';
+  }
+  if (mode === 'ending') {
+      mode = 'home';
   }
 }
 
@@ -185,6 +206,7 @@ function room1() {
 function room_liv_on() {
   background(room_living_on);
   clickTVon.draw();
+  clickLeft.draw();
   mainText();
 }
 
@@ -220,6 +242,6 @@ function narration() {
 function narration_w_ch() {
   background('black');
   clickYes.draw();
-  clickNo.draw();7
+  clickNo.draw();
   narrText();
 }
