@@ -312,7 +312,7 @@ function setup() {
   clickBed.onRelease = function() {
     mode = 'end_bed';
     endingCounter++;
-    endCom = 'I have tea with the monster that has been living under my bed. Even though the Calamity hits us, I\'m too busy trying to figure out which fork to use.';
+    endCom = 'I have tea with the monster that has been living under my bed. Even though the Calamity hits us, I\'m too busy trying to figure out which fork to use to care.';
   }
 
   // click suit
