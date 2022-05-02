@@ -2,10 +2,6 @@ zzhtml, body {
   margin: 0;
   padding: 0;
   font-family: 'Josefin Sans Light', sans-serif;
-  background-image: url("my_assets/img/img.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 canvas {

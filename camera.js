@@ -5,9 +5,16 @@
 let myCanvas;
 let message = 'hello :)';
 let narrationText = '';
+let endCom = '';
 let rooms = ['room1', 'room_door', 'room_kit', 'room_bed'];
 let num = 0;
 let endingCounter;
+
+// arrays for
+let tvIntro = ['BREAKING NEWS','You have five minutes to prepare.',
+                'City-wide lockdown is to be put into place.',
+                'Do not leave your home at any cost.',
+                'The Calamity has started.']
 
 // img
 let homePage;
@@ -56,8 +63,11 @@ function preload() {
   room_kitchen = loadImage('my_assets/img/dma_node-3.png');
   room_doorway = loadImage('my_assets/img/dma_node-4.png');
 
-  // endings
+  // tv
+  intro_tv = loadImage('my_assets/img/intro_tv.png');
+
   ending_tv = loadImage('my_assets/img/ending_tv.png');
+  // endings
   ending_door = loadImage('my_assets/img/ending_door.png');
   ending_kit = loadImage('my_assets/img/ending_kit.png');
   ending_bed = loadImage('my_assets/img/ending_bed.png');
@@ -184,7 +194,7 @@ function setup() {
   }
 
   clickClose.onRelease = function() {
-    mode = rooms[num];
+    mode = rooms[0];
   }
 
   // TV INTERACTIONS
@@ -206,8 +216,9 @@ function setup() {
   }
 
   clickTVon.onRelease = function() {
-    narrationText = 'Maybe I should turn it off?';
-    mode = 'narration_w_ch';
+    endingCounter++;
+    endCom = 'I switch over to a telenovela and watch one last episode of "My coworker Mike has ran off with my husband!" As it\'s telling me to tune in for next week, the Calamity strikes, so I\'ll never know how it ends.';
+    mode = 'end_tv';
   }
 
   // click doorway
@@ -230,7 +241,56 @@ function setup() {
 
   clickDoor.onRelease = function() {
     mode = 'end_door';
-    message = 'The Calamity comes and unprepared, I get obliterated to bits.';
+    endingCounter++;
+    endCom = 'The Calamity comes and even though I was warned not to go outside, I get obliterated to bits.';
+  }
+
+  // click fridge
+  clickFridge = new Clickable();
+  clickFridge.image = fridge;
+  clickFridge.text = "";
+  clickFridge.locate(300, 120);
+  clickFridge.resize(220, 440);
+  clickFridge.strokeWeight = 0;
+
+  clickFridge.onHover = function() {
+    message = 'Maybe I could have a quick snack?';
+    clickFridge.imageScale = 1.1;
+  }
+
+  clickFridge.onOutside = function() {
+    message = 'What should I look at?';
+    clickFridge.imageScale = 1;
+  }
+
+  clickFridge.onRelease = function() {
+    mode = 'end_kit';
+    endingCounter++;
+    endCom = 'I try to eat sushi, but it turns out that I\'m out of wasabi. The Calamity hits and I perish with an mediocre meal, clutched in my fingers.';
+  }
+
+  // click bed
+  clickBed = new Clickable();
+  clickBed.image = bed;
+  clickBed.text = "";
+  clickBed.locate(300, 120);
+  clickBed.resize(220, 440);
+  clickBed.strokeWeight = 0;
+
+  clickBed.onHover = function() {
+    message = 'Maybe I could just hide under the bed.';
+    clickBed.imageScale = 1.1;
+  }
+
+  clickBed.onOutside = function() {
+    message = 'What should I look at?';
+    clickBed.imageScale = 1;
+  }
+
+  clickBed.onRelease = function() {
+    mode = 'end_bed';
+    endingCounter++;
+    endCom = 'I have tea with the monster that has been living under my bed. Even though the Calamity hits us, I\'m too busy trying to figure out which fork to use.';
   }
 }
 
@@ -289,19 +349,36 @@ function mouseClicked() {
 function mainText() {
   fill(255);
   textAlign(CENTER);
-  textSize(25);
+  textSize(23);
   fill('white');
-//  textWrap(WORD);
   text(message, width * 0.5, height * 0.9);
 }
 
 function narrText() {
   fill(255);
   textAlign(CENTER);
-  textSize(25);
+  textSize(23);
   fill('white');
-//  textWrap(WORD);
   text(narrationText, width * 0.5, height * 0.5);
+}
+
+function endText() {
+  fill(255);
+  textAlign(CENTER);
+  textSize(23);
+  text(endCom, width * 0.2, height * 0.9, 500, 100);
+}
+
+function endLong() {
+  fill(255);
+  textAlign(CENTER);
+  textSize(23);
+  text(endCom, width * 0.05, height * 0.83, 700, 120);
+}
+
+function intro(){
+  background(intro_tv);
+  endLong();
 }
 
 function home() {
@@ -335,7 +412,7 @@ function room_bed() {
 
 function room_kit() {
   background(room_kitchen);
-  clickFridge.draw();
+  //clickFridge.draw();
   clickLeft.draw();
   clickRight.draw();
   mainText();
@@ -351,22 +428,26 @@ function room_door() {
 
 function end_tv() {
   background(ending_tv);
-  mainText();
+  endLong();
+  clickClose.draw();
 }
 
 function end_door() {
   background(ending_door);
-  mainText();
+  endText();
+  clickClose.draw();
 }
 
 function end_kit() {
   background(ending_kit);
-  mainText();
+  endText();
+  clickClose.draw();
 }
 
 function end_bed() {
   background(ending_bed);
-  mainText();
+  endLong();
+  clickClose.draw();
 }
 
 function narration() {
