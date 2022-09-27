@@ -94,7 +94,7 @@ function preload() {
 }
 
 function setup() {
-  myCanvas = createCanvas(800, 750);
+  myCanvas = createCanvas(600, 550);
   myCanvas.parent('myCanvas');
 
   //click start
@@ -136,7 +136,7 @@ function setup() {
   clickNext.text = "";
   clickNext.color = "#EEEEEE00";
   clickNext.strokeWeight = 0;
-  clickNext.locate(730, 400);
+  clickNext.locate(550, 270);
   clickNext.resize(50, 50);
 
   clickNext.onHover = function() {
@@ -156,7 +156,7 @@ function setup() {
   clickLeft.text = "";
   clickLeft.image = left;
   clickLeft.color = "#EEEEEE00";
-  clickLeft.locate(20, 400);
+  clickLeft.locate(20, 270);
   clickLeft.resize(50, 50);
   clickLeft.strokeWeight = 0;
 
@@ -179,7 +179,7 @@ function setup() {
   clickRight.text = "";
   clickRight.image = right;
   clickRight.color = "#EEEEEE00";
-  clickRight.locate(730, 400);
+  clickRight.locate(550, 270);
   clickRight.resize(50, 50);
   clickRight.strokeWeight = 0;
 
@@ -201,7 +201,7 @@ function setup() {
   clickClose.text = "";
   clickClose.image = close;
   clickClose.color = "#EEEEEE00";
-  clickClose.locate(730, 100);
+  clickClose.locate(500, 50);
   clickClose.resize(50, 50);
   clickClose.strokeWeight = 0;
 
@@ -223,8 +223,8 @@ function setup() {
   clickTVon = new Clickable();
   clickTVon.text = "";
   clickTVon.image = tvOn;
-  clickTVon.locate(260, 240);
-  clickTVon.resize(250, 180);
+  clickTVon.locate(180, 160);
+  clickTVon.resize(220, 150);
   clickTVon.strokeWeight = 0;
 
   clickTVon.onHover = function() {
@@ -247,8 +247,8 @@ function setup() {
   clickDoor = new Clickable();
   clickDoor.image = door;
   clickDoor.text = "";
-  clickDoor.locate(300, 120);
-  clickDoor.resize(220, 440);
+  clickDoor.locate(230, 80);
+  clickDoor.resize(160, 320);
   clickDoor.strokeWeight = 0;
 
   clickDoor.onHover = function() {
@@ -271,8 +271,8 @@ function setup() {
   clickFridge = new Clickable();
   clickFridge.image = fridge;
   clickFridge.text = "";
-  clickFridge.locate(178, 103);
-  clickFridge.resize(250, 500);
+  clickFridge.locate(132, 68);
+  clickFridge.resize(195, 375);
   clickFridge.strokeWeight = 0;
 
   clickFridge.onHover = function() {
@@ -295,8 +295,8 @@ function setup() {
   clickBed = new Clickable();
   clickBed.image = bed;
   clickBed.text = "";
-  clickBed.locate(-10, 350);
-  clickBed.resize(640, 400);
+  clickBed.locate(-25, 260);
+  clickBed.resize(520, 280);
   clickBed.strokeWeight = 0;
 
   clickBed.onHover = function() {
@@ -320,7 +320,7 @@ function setup() {
   clickSuit.image = suit;
   clickSuit.text = "";
   clickSuit.color = "#EEEEEE00";
-  clickSuit.locate(600, 500);
+  clickSuit.locate(420, 380);
   clickSuit.resize(70, 70);
   clickSuit.strokeWeight = 0;
 
@@ -401,7 +401,7 @@ function mouseClicked() {
 function mainText() {
   fill(255);
   textAlign(CENTER);
-  textSize(23);
+  textSize(18);
   fill('white');
   text(message, width * 0.5, height * 0.9);
 }
@@ -409,23 +409,23 @@ function mainText() {
 function narrText() {
   fill(255);
   textAlign(CENTER);
-  textSize(23);
+  textSize(18);
   fill('white');
-  text(narrationText, width * 0.05, height * 0.83, 700, 120);
+  text(narrationText, width * 0.05, height * 0.83, 550, 120);
 }
 
 function endText() {
   fill('#2A3A3F');
   textAlign(CENTER);
-  textSize(23);
-  text(endCom, width * 0.2, height * 0.9, 500, 100);
+  textSize(18);
+  text(endCom, width * 0.2, height * 0.9, 370, 100);
 }
 
 function endLong() {
   fill(255);
   textAlign(CENTER);
-  textSize(23);
-  text(endCom, width * 0.05, height * 0.83, 700, 140);
+  textSize(18);
+  text(endCom, width * 0.05, height * 0.83, 550, 140);
 }
 
 function intro() {
